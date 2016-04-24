@@ -1,3 +1,4 @@
+// tem imports a mais
 import java.net.*;
 import java.util.*;
 import javax.swing.*;
@@ -29,11 +30,11 @@ public class lerficheiro extends JFrame {
 	public lerficheiro() {
 		super("Browser do Bruno!");
 			
-		addressBar = new JTextField("Indroduz Um Link!");
+		addressBar = new JTextField("Indroduz Um Link! (http:// é necessário!!)");
 		addressBar.addActionListener(
 			new ActionListener() {
 				public void actionPerformed(ActionEvent event) {
-					loadCrap(event.getActionCommand());
+					carregarMensagemErro(event.getActionCommand());
 					}
 				}
 				);
@@ -44,7 +45,7 @@ public class lerficheiro extends JFrame {
 					new HyperlinkListener() {
 						public void hyperlinkUpdate(HyperlinkEvent event) {
 							if(event.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
-								loadCrap(event.getURL().toString());
+								carregarMensagemErro(event.getURL().toString());
 							}
 						}
 					}
@@ -55,8 +56,8 @@ public class lerficheiro extends JFrame {
 					setVisible(true);
 					
 	}
-	//load crap para imprimir no ecra
-	private void loadCrap(String userText){
+	//imprime mensagem de erro no ecra
+	private void carregarMensagemErro(String userText){
 		try{
 				display.setPage(userText);
 				addressBar.setText(userText);
